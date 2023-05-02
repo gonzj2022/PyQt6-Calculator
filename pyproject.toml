@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pyqt6-windchill-app"
+version = "0.1.0"
+description = ""
+authors = ["gonzj2022 <gonzj988@hsd.k12.or.us>"]
+readme = "README.md"
+packages = [{include = "pyqt6_windchill_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
