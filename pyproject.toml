@@ -7,21 +7,9 @@ readme = "README.md"
 packages = [{include = "pyqt6_windchill_app"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-from tkinter import*
-import math
-
-blank_space = " "
-root.title(50 * blank_space + "VS Code Calculation")
-root.resizable(width =FALSE, height = FALSE)
-root.geometry(438x573+460+40)
-
-coverFrame = Frame (root, bd = 20, pady=2, relief = RIDGE)
-coverFrame.grid()
-
-root.mainloop()
