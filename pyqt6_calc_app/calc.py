@@ -9,8 +9,11 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("My App")
+        self.setWindowTitle("Calculator")
+
         button = QPushButton("Press Me!")
+        
+        self.setFixedSize(QSize(400, 300))
 
         # Set the central widget of the Window.
         self.setCentralWidget(button)
