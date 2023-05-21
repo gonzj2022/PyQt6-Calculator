@@ -28,15 +28,18 @@ class MainWindow(QMainWindow):
 
         # Cube Length inputs
         Length_label = QLabel("Length")
-        self.Length_insert = QLineEdit()
+        self.Length_Spinbox = QSpinBox()
+        self.Length_Spinbox.setMinimum(0)
         
         #Cube Width inputs
         Width_label = QLabel("Width")
-        self.Width_insert = QLineEdit()
-        
+        self.Width_Spinbox = QSpinBox()
+        self.Width_Spinbox.setMinimum(0)
+
         #Cube Height inputs
         Height_label = QLabel("Height")
-        Height_insert = QLineEdit()
+        self.Height_Spinbox = QSpinBox()
+        self.Height_Spinbox.setMinimum(0)
 
         #Results Label
         results_title = QLabel("Volume")
@@ -61,11 +64,11 @@ class MainWindow(QMainWindow):
         # add our left panel widgets
         left_pane.addWidget(title_label)
         left_pane.addWidget(Length_label)
-        left_pane.addWidget(self.Length_insert)
+        left_pane.addWidget(self.Length_Spinbox)
         left_pane.addWidget(Width_label)
-        left_pane.addWidget(self.Width_insert)
+        left_pane.addWidget(self.Width_Spinbox)
         left_pane.addWidget(Height_label)
-        left_pane.addWidget(Height_insert)
+        left_pane.addWidget(self.Height_Spinbox)
         left_pane.addWidget(self.calculate_button)
 
         # add our right pane widgets
@@ -85,7 +88,7 @@ class MainWindow(QMainWindow):
     def calculate_volume(self):
         """Calculate Volume"""
         #Get Length
-        length = self.Length_insert.value()
+        length = self.Length_Spinbox.value()
         print(length)
         self.results_window.setText(f"You have {length}.")
 
