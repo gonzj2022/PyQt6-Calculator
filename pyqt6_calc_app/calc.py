@@ -26,15 +26,15 @@ class MainWindow(QMainWindow):
         h1_font.setPointSize(30)
         title_label.setFont(h1_font)
 
-        #Length inputs
+        # Cube Length inputs
         Length_label = QLabel("Length")
-        Length_insert = QLineEdit()
+        self.Length_insert = QLineEdit()
         
-        #Width inputs
+        #Cube Width inputs
         Width_label = QLabel("Width")
-        Width_insert = QLineEdit()
+        self.Width_insert = QLineEdit()
         
-        #Height inputs
+        #Cube Height inputs
         Height_label = QLabel("Height")
         Height_insert = QLineEdit()
 
@@ -45,10 +45,13 @@ class MainWindow(QMainWindow):
         h2_font = results_title.font()
         h2_font.setPointSize(24)
         results_title.setFont(h2_font)
-        results_window = QLineEdit("add instructions here")
-        results_window.setMinimumHeight(100)
+        self.results_window = QLineEdit("Results appear here")
+        self.results_window.setMinimumHeight(100)
 
-        calculate_button = QPushButton("Calculate")
+        self.calculate_button = QPushButton("Calculate")
+        # add a calculate function
+        self.calculate_button.clicked.connect(self.calculate_volume)
+
 
         #Align the label
         title_label.setAlignment(Qt.AlignmentFlag.AlignHCenter |
@@ -58,16 +61,16 @@ class MainWindow(QMainWindow):
         # add our left panel widgets
         left_pane.addWidget(title_label)
         left_pane.addWidget(Length_label)
-        left_pane.addWidget(Length_insert)
+        left_pane.addWidget(self.Length_insert)
         left_pane.addWidget(Width_label)
-        left_pane.addWidget(Width_insert)
+        left_pane.addWidget(self.Width_insert)
         left_pane.addWidget(Height_label)
         left_pane.addWidget(Height_insert)
-        left_pane.addWidget(calculate_button)
+        left_pane.addWidget(self.calculate_button)
 
         # add our right pane widgets
         right_pane.addWidget(results_title)
-        right_pane.addWidget(results_window)
+        right_pane.addWidget(self.results_window)
 
 
         # add the two panes to the layout
@@ -78,6 +81,22 @@ class MainWindow(QMainWindow):
         gui = QWidget()
         gui.setLayout(main_layout)
         self.setCentralWidget(gui)
+    
+    def calculate_volume(self):
+        """Calculate Volume"""
+        #Get Length
+        length = self.Length_insert.value()
+        print(length)
+        self.results_window.setText(f"You have {length}.")
+
+        #Get Width
+
+        #Get Height
+
+        #Get Volume
+
+        #Disply results
+
 
 
 if __name__ == "__main__":
