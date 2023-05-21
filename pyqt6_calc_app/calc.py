@@ -2,6 +2,7 @@ import sys
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, QWidget, QLineEdit, QSpinBox
+from PyQt6.QtGui import QIcon, QPixmap
 
 # Subclass QMainWindow to customize your application's main window
 class MainWindow(QMainWindow):
@@ -11,6 +12,15 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Calculator")
         
+        #App Icon
+        self.icon = "Images/cube.png"
+        self.setWindowIcon(QIcon(self.icon))
+        
+        #Cube Image
+        label = QLabel(self)
+        pixmap = QPixmap("Images/Gray Cube.png")
+        label.setPixmap(pixmap)
+
         # Create our Layouts
         main_layout = QHBoxLayout()
 
@@ -63,16 +73,17 @@ class MainWindow(QMainWindow):
 
         # add our left panel widgets
         left_pane.addWidget(title_label)
+        left_pane.addWidget(Height_label)
+        left_pane.addWidget(self.Height_Spinbox)
         left_pane.addWidget(Length_label)
         left_pane.addWidget(self.Length_Spinbox)
         left_pane.addWidget(Width_label)
         left_pane.addWidget(self.Width_Spinbox)
-        left_pane.addWidget(Height_label)
-        left_pane.addWidget(self.Height_Spinbox)
         left_pane.addWidget(self.calculate_button)
 
         # add our right pane widgets
         right_pane.addWidget(results_title)
+        right_pane.addWidget(label)
         right_pane.addWidget(self.results_window)
 
 
@@ -90,7 +101,7 @@ class MainWindow(QMainWindow):
         #Get Length
         length = self.Length_Spinbox.value()
         print(length)
-        self.results_window.setText(f"You have {length}.")
+        self.results_window.setText(f"Your length is {length}.")
 
         #Get Width
 
