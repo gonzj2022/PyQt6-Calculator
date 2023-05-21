@@ -1,69 +1,30 @@
 import sys
+import typing
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QLabel, QLineEdit, QVBoxLayout
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import (
-    QApplication,
-    QCheckBox,
-    QComboBox,
-    QDateEdit,
-    QDateTimeEdit,
-    QDial,
-    QDoubleSpinBox,
-    QFontComboBox,
-    QLabel,
-    QLCDNumber,
-    QLineEdit,
-    QMainWindow,
-    QProgressBar,
-    QPushButton,
-    QRadioButton,
-    QSlider,
-    QSpinBox,
-    QTimeEdit,
-    QVBoxLayout,
-    QWidget,
-)
-
-
-# Subclass QMainWindow to customize your application's main window
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Widgets App")
+        self.setWindowTitle("My App")
+        self.setFixedSize(QSize(400, 300))
+        self.label = QLabel()
+        self.input = QLineEdit()
+        self.input.textChanged.connect(self.label.setText)
 
         layout = QVBoxLayout()
-        widgets = [
-            QCheckBox,
-            QComboBox,
-            QDateEdit,
-            QDateTimeEdit,
-            QDial,
-            QDoubleSpinBox,
-            QFontComboBox,
-            QLCDNumber,
-            QLabel,
-            QLineEdit,
-            QProgressBar,
-            QPushButton,
-            QRadioButton,
-            QSlider,
-            QSpinBox,
-            QTimeEdit,
-        ]
+        layout.addWidget(self.input)
+        layout.addWidget(self.label)
 
-        for w in widgets:
-            layout.addWidget(w())
 
-        widget = QWidget()
-        widget.setLayout(layout)
+        container = QWidget()
+        container.setLayout(layout)
 
-        # Set the central widget of the Window. Widget will expand
-        # to take up all the space in the window by default.
-        self.setCentralWidget(widget)
-
+        self.setCentralWidget(container)
 
 app = QApplication(sys.argv)
+
 window = MainWindow()
 window.show()
 
