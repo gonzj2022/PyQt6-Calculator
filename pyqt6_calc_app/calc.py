@@ -26,30 +26,29 @@ class MainWindow(QMainWindow):
         h1_font.setPointSize(30)
         title_label.setFont(h1_font)
 
-        #temperature inputs
-        temperature_label = QLabel("Temperature")
-        temperature_spinbox= QSpinBox()
-        temperature_spinbox.setMinimum(-100)
-        temperature_spinbox.setMaximum(40)
+        #Length inputs
+        Length_label = QLabel("Length")
+        Length_insert = QLineEdit()
         
-        # Wind speed inputs
-        wind_label = QLabel("Wind Speed:")
-        wind_spinbox = QSpinBox()
-        wind_spinbox.setMinimum(-100)
-        wind_spinbox.setMaximum(40)
+        #Width inputs
+        Width_label = QLabel("Width")
+        Width_insert = QLineEdit()
         
+        #Height inputs
+        Height_label = QLabel("Height")
+        Height_insert = QLineEdit()
 
         #Results Label
-        results_title = QLabel("Results")
+        results_title = QLabel("Volume")
         results_title.setAlignment(Qt.AlignmentFlag.AlignHCenter |
                                    Qt.AlignmentFlag.AlignTop)
         h2_font = results_title.font()
-        h2_font.setPointSize(26)
+        h2_font.setPointSize(24)
         results_title.setFont(h2_font)
         results_window = QLineEdit("add instructions here")
         results_window.setMinimumHeight(100)
 
-        calculate_button = QPushButton("Get Windspeed")
+        calculate_button = QPushButton("Calculate")
 
         #Align the label
         title_label.setAlignment(Qt.AlignmentFlag.AlignHCenter |
@@ -58,10 +57,12 @@ class MainWindow(QMainWindow):
 
         # add our left panel widgets
         left_pane.addWidget(title_label)
-        left_pane.addWidget(temperature_label)
-        left_pane.addWidget(temperature_spinbox)
-        left_pane.addWidget(wind_label)
-        left_pane.addWidget(wind_spinbox)
+        left_pane.addWidget(Length_label)
+        left_pane.addWidget(Length_insert)
+        left_pane.addWidget(Width_label)
+        left_pane.addWidget(Width_insert)
+        left_pane.addWidget(Height_label)
+        left_pane.addWidget(Height_insert)
         left_pane.addWidget(calculate_button)
 
         # add our right pane widgets
