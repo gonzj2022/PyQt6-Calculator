@@ -1,8 +1,9 @@
 import sys
 
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, QWidget, QLineEdit, QSpinBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, QWidget, QTextEdit, QSpinBox
 from PyQt6.QtGui import QIcon, QPixmap
+import controller
 
 # Subclass QMainWindow to customize your application's main window
 class MainWindow(QMainWindow):
@@ -58,7 +59,7 @@ class MainWindow(QMainWindow):
         h2_font = results_title.font()
         h2_font.setPointSize(24)
         results_title.setFont(h2_font)
-        self.results_window = QLineEdit("Results appear here")
+        self.results_window = QTextEdit("Results appear here")
         self.results_window.setMinimumHeight(100)
 
         self.calculate_button = QPushButton("Calculate")
@@ -99,18 +100,19 @@ class MainWindow(QMainWindow):
     def calculate_volume(self):
         """Calculate Volume"""
         #Get Length
-        length = self.Length_Spinbox.value()
-        print(length)
-        self.results_window.setText(f"Your length is {length}.")
-
+        Length = self.Length_Spinbox.value()
+        
         #Get Width
+        Width = self.Width_Spinbox.value()
 
         #Get Height
+        Height = self.Height_Spinbox.value()
 
         #Get Volume
+        results = controller.get_volume(Length, Width, Height)
 
-        #Disply results
-
+        #Display results
+        self.results_window.setText(results)
 
 
 if __name__ == "__main__":
@@ -118,5 +120,7 @@ if __name__ == "__main__":
 
     window = MainWindow()
     window.show()
+    controller
 
     app.exec()
+    
