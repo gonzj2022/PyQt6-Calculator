@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         h2_font = results_title.font()
         h2_font.setPointSize(24)
         results_title.setFont(h2_font)
-        self.results_window = QTextEdit("Results appear here")
+        self.results_window = QLabel("Results appear here")
         self.results_window.setMinimumHeight(100)
 
         self.calculate_button = QPushButton("Calculate")
